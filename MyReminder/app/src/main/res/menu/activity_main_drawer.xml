@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/alarm"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/alarm_text" />
+        <item
+            android:id="@+id/task"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/task_text" />
+        <item
+            android:id="@+id/loc_reminder_id"
+            android:icon="@drawable/ic_location_black"
+            android:title="@string/location_reminder" />
+        <item
+            android:id="@+id/edit_profile"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/edit_profile_text" />
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/action_settings" />
+        <item
+            android:id="@+id/my_location"
+            android:icon="@drawable/location_img"
+            android:title="@string/my_location_text" />
+    </group>
+
+    <item android:title="Further Information">
+        <menu>
+            <item
+                android:id="@+id/nav_contact"
+                android:icon="@drawable/ic_contact"
+                android:title="@string/contact_us_text" />
+            <item
+                android:id="@+id/nav_about_us"
+                android:icon="@drawable/about_us"
+                android:title="@string/about_us_text" />
+        </menu>
+    </item>
+
+</menu>

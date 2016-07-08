@@ -1,0 +1,91 @@
+<resources>
+    <string name="app_name">My Reminder</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="alarm_text">Alarms</string>
+    <string name="task_text">Reminder</string>
+    <string name="edit_profile_text">Edit Profile</string>
+    <string name="my_location_text">My Location</string>
+    <string name="contact_us_text">Contact Us</string>
+    <string name="about_us_text">About Us</string>
+    <string name="snooze_header">Select Snooze Time</string>
+    <string-array name="SnoozeTimes">
+        <item>5 mins</item>
+        <item>10 mins</item>
+        <item>15 mins</item>
+        <item>30 mins</item>
+        <item>45 mins</item>
+        <item>1 hr</item>
+    </string-array>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+
+    <string-array name="pref_alarm_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+
+    <string-array name="alarm_type_array">
+        <item>Normal</item>
+        <item>Calculate(easy)</item>
+        <item>Calculate(hard)</item>
+    </string-array>
+
+    <!-- Example settings for Notifications -->
+
+    <string name="pref_reminder_notifications">Reminder Notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="alarm_type">Alarm Type</string>
+    <string name="alarm_type_key">alarm_type_key</string>
+    <string name="title_activity_geocoding_maps">Map</string>
+    <string name="action_satellite">Satellite View</string>
+    <string name="action_normalview">Normal View</string>
+    <string name="action_hybrid">Hybrid View</string>
+    <string name="action_terrain">Terrain</string>
+
+    <string name="geofence_transition_entered">Entered</string>
+    <string name="geofence_transition_exited">Exited</string>
+    <string name="unknown_geofence_transition">Unknown Transition</string>
+
+    <string name="geofence_transition_notification_text">Click notification to return to app</string>
+
+    <string name="geofence_transition_invalid_type">
+        Geofence transition error: invalid transition type %1$d
+    </string>
+
+    <string name="task_not_completed">task uncomplete </string>
+    <string name="task_completed">Completed</string>
+    <string name="location_reminder">Location Reminder</string>
+    <string name="pref_title_ringtone_notification">Notification Ringtone</string>
+    <string name="preference_user_key">PreferenceUserKey</string>
+
+    <string-array name="radius">
+        <item>50 m</item>
+        <item>100 m</item>
+        <item>150 m</item>
+        <item>200 m</item>
+        <item>250 m</item>
+        <item>300 m</item>
+    </string-array>
+    <string-array name="colors">
+        <item>chrome</item>
+        <item>black</item>
+        <item>blue</item>
+        <item>green</item>
+        <item>pink</item>
+        <item>red</item>
+        <item>violet</item>
+    </string-array>
+</resources>

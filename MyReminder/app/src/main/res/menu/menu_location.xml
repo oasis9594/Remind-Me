@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+    <item android:id="@+id/action_settings" android:title="@string/action_settings"
+        android:orderInCategory="1" app:showAsAction="never" />
+    <item android:id="@+id/action_satellite" android:title="@string/action_satellite"
+        android:orderInCategory="2" app:showAsAction="never" />
+    <item android:id="@+id/action_normalview" android:title="@string/action_normalview"
+        android:orderInCategory="3" app:showAsAction="never" />
+    <item android:id="@+id/action_hybrid" android:title="@string/action_hybrid"
+        android:orderInCategory="3" app:showAsAction="never" />
+    <item android:id="@+id/action_terrain" android:title="@string/action_terrain"
+        android:orderInCategory="3" app:showAsAction="never" />
+</menu>

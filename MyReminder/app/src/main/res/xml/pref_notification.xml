@@ -1,0 +1,30 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- A 'parent' preference, which enables/disables child preferences (below)
+         when checked/unchecked. -->
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="notifications_reminder"
+        android:title="@string/pref_reminder_notifications" />
+
+    <!-- Allows the user to choose a ringtone in the 'notification' category. -->
+    <!-- NOTE: RingtonePreference's summary should be set to its value by the activity code. -->
+    <RingtonePreference
+        android:key="ringtone"
+        android:ringtoneType="alarm"
+        android:title="@string/pref_title_ringtone" />
+    <RingtonePreference
+        android:key="ringtone_notification"
+        android:ringtoneType="notification"
+        android:title="@string/pref_title_ringtone_notification" />
+
+    <ListPreference
+        android:title="@string/alarm_type"
+        android:key="@string/alarm_type_key"
+        android:entries="@array/alarm_type_array"
+        android:entryValues="@array/pref_alarm_values"
+        android:dialogTitle="Choose Alarm Type"
+        android:defaultValue="0"
+        />
+
+</PreferenceScreen>

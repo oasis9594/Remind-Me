@@ -1,0 +1,77 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.dell.geocodingtesting.GeocodingMapsActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/mapToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize" />
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mapToolbar" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mapToolbar"
+        android:layout_margin="8dp"
+        android:padding="5dp">
+
+        <EditText
+            android:id="@+id/addressText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_edittext"
+            android:hint="Address"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:paddingEnd="35dp"
+            android:paddingStart="5dp"
+            android:shadowColor="#424242" />
+
+        <ImageButton
+            android:id="@+id/clear_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:background="#ffffff"
+            android:padding="5dp"
+            android:src="@drawable/ic_cancel" />
+    </FrameLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/frameLayout"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="70dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:background="#ffffff"
+        android:src="@drawable/ic_maps_my_location"
+        app:borderWidth="0dp" />
+
+    <com.rey.material.widget.Button
+        android:id="@+id/button2"
+        style="@style/Material.Drawable.Ripple.myStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Pick this place"
+        android:onClick="CreateGeofence"
+        app:rd_backgroundColor="#ffffff"
+        app:rd_enable="true"
+        app:rd_rippleType="wave"/>
+
+</RelativeLayout>
