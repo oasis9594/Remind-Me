@@ -24,8 +24,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.support.design.widget.FloatingActionButton;
-import android.widget.Button;
-import android.widget.ImageView;
+
 import android.widget.Toast;
 
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
@@ -87,6 +86,7 @@ public class AlarmActivity extends Fragment implements TimePickerDialog.OnTimeSe
         collapsingToolbar = (CollapsingToolbarLayout) view.findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle("My Alarms");
 
+        toolbar.showOverflowMenu();
         setHasOptionsMenu(true);
 
         now=Calendar.getInstance();

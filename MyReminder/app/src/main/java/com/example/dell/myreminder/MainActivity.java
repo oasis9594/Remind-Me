@@ -118,6 +118,9 @@ public class MainActivity extends AppCompatActivity
             case 1:
                 callAlarmFragment();
                 break;
+            case 2:
+                callReminderFragment();
+                break;
             case 3:
                 callGeofenceFragment();
                 break;
@@ -138,6 +141,14 @@ public class MainActivity extends AppCompatActivity
         GeofenceActivity fragment=new GeofenceActivity();
         fragmentTransaction.replace(R.id.fragment_container, fragment, "GeofenceFragment").commit();
         navigationView.getMenu().getItem(2).setChecked(true);
+    }
+    public void callReminderFragment()
+    {
+        FragmentTransaction fragmentTransaction =
+                getSupportFragmentManager().beginTransaction();
+        ReminderListFragment fragment=new ReminderListFragment();
+        fragmentTransaction.replace(R.id.fragment_container, fragment, "GeofenceFragment").commit();
+        navigationView.getMenu().getItem(1).setChecked(true);
     }
     public void UserInput(View v)
     {
@@ -185,29 +196,13 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.alarm) {
             //Replacing the main content with Alarm Fragment
-            AlarmActivity fragment = new AlarmActivity();
-            FragmentTransaction fragmentTransaction =
-                    getSupportFragmentManager().beginTransaction();
-            Log.i("MApp", "TransactionBegun");
-            fragmentTransaction.replace(R.id.fragment_container, fragment).commit();
-            Log.i("MApp", "ReplaceCalled");
+            callAlarmFragment();
 
         } else if (id == R.id.task) {
-            MyFragment fragment = new MyFragment();
-            Bundle bundle = new Bundle();
-            Log.i("MApp", "onCreate");
-            bundle.putString("text", "Home");
-            bundle.putInt("img_id", R.drawable.ic_alarmclockpink);
-            fragment.setArguments(bundle);
-            FragmentTransaction fragmentTransaction =
-                    getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, fragment).commit();
+            callReminderFragment();
 
         } else if (id == R.id.loc_reminder_id) {
-            FragmentTransaction fragmentTransaction =
-                    getSupportFragmentManager().beginTransaction();
-            GeofenceActivity fragment=new GeofenceActivity();
-            fragmentTransaction.replace(R.id.fragment_container, fragment).commit();
+            callGeofenceFragment();
 
         } else if (id == R.id.my_location) {
 

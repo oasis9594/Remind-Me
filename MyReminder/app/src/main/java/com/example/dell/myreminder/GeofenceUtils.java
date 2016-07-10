@@ -28,8 +28,8 @@ public class GeofenceUtils {
         switch (color)
         {
             case 0: return R.drawable.ic_location_chrome;
-            case 2: return R.drawable.ic_location_black;
-            case 1: return R.drawable.ic_location_blue;
+            case 1: return R.drawable.ic_location_black;
+            case 2: return R.drawable.ic_location_blue;
             case 3: return R.drawable.ic_location_green;
             case 4: return R.drawable.ic_location_pink;
             case 5: return R.drawable.ic_location_red;

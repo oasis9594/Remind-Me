@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:elevation="4dp"
+	android:layout_margin="2dp">
+
+	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<ImageView
+			android:id="@+id/myCover"
+			android:layout_width="100dp"
+			android:layout_height="100dp"
+			android:src="@drawable/ic_alarmclockpink" />
+
+		<TextView
+			android:id="@+id/myTitle"
+			android:text="Title"
+			android:textSize="20sp"
+			android:maxEms="8"
+			android:ems="8"
+			android:singleLine="false"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:layout_marginTop="15dp"
+			android:layout_alignParentTop="true"
+			android:layout_toEndOf="@+id/myCover" />
+
+		<TextView
+			android:id="@+id/myDate"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Date"
+			android:textSize="15sp"
+			android:layout_marginTop="5dp"
+			android:layout_below="@+id/myTitle"
+			android:layout_alignStart="@+id/myTitle" />
+		<TextView
+			android:id="@+id/myTime"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Time"
+			android:textSize="15sp"
+			android:layout_below="@+id/myDate"
+			android:layout_alignStart="@+id/myTitle" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="10dp"
+			android:textSize="15sp"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:text="3 days 40h 50m left"
+			android:maxEms="4"
+			android:singleLine="false"
+			android:gravity="end"
+			android:id="@+id/timeLeftReminder"
+			android:layout_centerVertical="true"
+			android:layout_alignParentEnd="true" />
+		<View
+			android:id="@+id/remDividerLine"
+			android:layout_width="match_parent"
+			android:layout_height="5dp"
+			android:layout_alignParentStart="true"
+			android:layout_below="@+id/myTime"
+			android:layout_marginTop="15dp"
+			android:background="@color/colorAccent" />
+	</RelativeLayout>
+</android.support.v7.widget.CardView>

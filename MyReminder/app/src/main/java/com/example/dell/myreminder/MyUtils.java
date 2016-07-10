@@ -146,4 +146,18 @@ public class MyUtils {
         }
         Log.w(AlarmConstants.ALARM_TAG, "alarmUtil");
     }
+    public static int getAlarmImage(int color)
+    {
+        switch (color)
+        {
+            case 0: return R.drawable.ic_alarmclock_chrome;
+            case 1: return R.drawable.ic_alarmclock_black;
+            case 2: return R.drawable.ic_alarmclock_cyan;
+            case 3: return R.drawable.ic_alarmclock_green;
+            case 4: return R.drawable.ic_alarmclockpink;
+            case 5: return R.drawable.ic_alarmclock_red;
+            case 6: return R.drawable.ic_alarmclock_violet;
+            default: return R.drawable.ic_alarmclockpink;
+        }
+    }
 }

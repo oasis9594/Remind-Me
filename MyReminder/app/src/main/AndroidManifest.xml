@@ -104,6 +104,10 @@
         <service
             android:name=".GeofenceTransitionsIntentService"
             android:exported="false" />
+        <activity
+            android:name=".ReminderEditActivity" />
+
+        <receiver android:name=".OnReminderReceiver" />
 
     </application>
 

@@ -152,8 +152,8 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/dividerLine2">
             <com.rey.material.widget.Button
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:text="S"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimaryDark"
@@ -165,8 +165,8 @@
                 rd_enable="true"
                 />
             <com.rey.material.widget.Button
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_margin="2dp"
                 android:text="M"
                 android:textAlignment="center"
@@ -178,8 +178,8 @@
                 rd_enable="true"
                 />
             <com.rey.material.widget.Button
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_margin="2dp"
                 android:text="T"
                 android:textAlignment="center"
@@ -191,8 +191,8 @@
                 rd_enable="true"
                 />
             <com.rey.material.widget.Button
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_margin="2dp"
                 android:text="W"
                 android:textAlignment="center"
@@ -204,8 +204,8 @@
                 rd_enable="true"
                 />
             <com.rey.material.widget.Button
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_margin="2dp"
                 android:text="T"
                 android:textAlignment="center"
@@ -217,11 +217,12 @@
                 rd_enable="true"
                 />
             <com.rey.material.widget.Button
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_margin="2dp"
                 android:text="F"
                 android:textAlignment="center"
+                android:background="@drawable/my_button"
                 android:textColor="@color/colorPrimaryDark"
                 android:id="@+id/friday_Button"
                 rd_rippleType="touch"
@@ -229,8 +230,8 @@
                 rd_enable="true"
                 />
             <com.rey.material.widget.Button
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_margin="2dp"
                 android:text="S"
                 android:textAlignment="center"

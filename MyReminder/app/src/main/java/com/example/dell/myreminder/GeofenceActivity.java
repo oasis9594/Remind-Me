@@ -21,6 +21,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -87,6 +90,7 @@ public class GeofenceActivity extends Fragment implements GoogleApiClient.Connec
         ((AppCompatActivity) getActivity()).setSupportActionBar(geofenceToolbar);
         geofenceToolbar.showOverflowMenu();
         setHasOptionsMenu(true);
+        geofenceToolbar.setNavigationIcon(R.drawable.ic_nav_icon);
         FAB=(FloatingActionButton)view.findViewById(R.id.myLocFab);
         dbHelper=GeofenceDBHelper.getInstance(getActivity());
         Log.w(GeofenceUtils.getTag(), "Getting all geofences!!!");
@@ -352,5 +356,22 @@ public class GeofenceActivity extends Fragment implements GoogleApiClient.Connec
     public void onSaveInstanceState(Bundle outState) {
         outState.putInt("Activity Key", 3);
         super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle item selection
+
+        switch (item.getItemId()) {
+            case android.R.id.home: //Menu icon
+                ((MainActivity)getActivity()).openDrawer();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
