@@ -124,6 +124,9 @@ public class MainActivity extends AppCompatActivity
             case 3:
                 callGeofenceFragment();
                 break;
+            case 4:
+                callContactUsFragment();
+                break;
         }
     }
     public void callAlarmFragment()
@@ -147,6 +150,14 @@ public class MainActivity extends AppCompatActivity
         FragmentTransaction fragmentTransaction =
                 getSupportFragmentManager().beginTransaction();
         ReminderListFragment fragment=new ReminderListFragment();
+        fragmentTransaction.replace(R.id.fragment_container, fragment, "GeofenceFragment").commit();
+        navigationView.getMenu().getItem(1).setChecked(true);
+    }
+    public void callContactUsFragment()
+    {
+        FragmentTransaction fragmentTransaction =
+                getSupportFragmentManager().beginTransaction();
+        ContactUs fragment=new ContactUs();
         fragmentTransaction.replace(R.id.fragment_container, fragment, "GeofenceFragment").commit();
         navigationView.getMenu().getItem(1).setChecked(true);
     }
@@ -204,14 +215,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.loc_reminder_id) {
             callGeofenceFragment();
 
-        } else if (id == R.id.my_location) {
-
-        } else if (id == R.id.settings) {
-
-        } else if (id == R.id.nav_contact) {
-
-        } else if(id==R.id.nav_about_us) {
-
+        } else if(id==R.id.nav_contact) {
+            callContactUsFragment();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
