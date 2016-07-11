@@ -6,8 +6,6 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
@@ -19,7 +17,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,13 +24,15 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG="MApp";
     NavigationView navigationView;
     String name, email, mPath;
-    ImageView upload;
+    CircleImageView upload;
     TextView userName, userEmail;
     private static final String KEY_NAME="userdetails.UserName",
             KEY_EMAIL="userdetails.UserEmail",
@@ -64,9 +63,15 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
         View hView =  navigationView.getHeaderView(0);
-        upload=(ImageView)hView.findViewById(R.id.profile_image);
+        upload=(CircleImageView) hView.findViewById(R.id.profile_image);
         userName=(TextView)hView.findViewById(R.id.headerName);
         userEmail=(TextView)hView.findViewById(R.id.headerEmail);
+        upload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UserInput(v);
+            }
+        });
         getFromSharedPrefs();
         if(mPath!=null)
             loadImageFromStorage();

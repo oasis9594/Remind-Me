@@ -18,8 +18,7 @@
         android:layout_height="70dp"
         android:src="@drawable/user_profile"
         app:border_color="#000000"
-        android:layout_marginStart="24dp"
-        android:onClick="UserInput"/>
+        android:layout_marginStart="24dp"/>
 
     <TextView
         android:id="@+id/headerName"
