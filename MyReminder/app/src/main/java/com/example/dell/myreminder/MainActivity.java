@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity
             KEY_EMAIL="userdetails.UserEmail",
             NULL_VALUE="userdetails.nullValue",
             KEY_IMAGEPATH="userdetails.ProfileImagePath";
+    int act=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "onCreate");
@@ -71,13 +72,13 @@ public class MainActivity extends AppCompatActivity
             loadImageFromStorage();
         if(bundle!=null)
         {
-            //TODO: Update Later
-            callGeofenceFragment();
+            updateFromBundle(bundle);
         }
         else if(savedInstanceState!=null)
             updateFromBundle(savedInstanceState);
         else
             callAlarmFragment();
+
     }
 
     public void getFromSharedPrefs()
@@ -110,9 +111,6 @@ public class MainActivity extends AppCompatActivity
     }
     public void updateFromBundle(Bundle bundle)
     {
-        //TODO: Update Later
-        if(bundle==null)
-            return;
         switch (bundle.getInt("Activity Key"))
         {
             case 1:
@@ -131,6 +129,7 @@ public class MainActivity extends AppCompatActivity
     }
     public void callAlarmFragment()
     {
+        act=1;
         AlarmActivity fragment = new AlarmActivity();
         FragmentTransaction fragmentTransaction =
                 getSupportFragmentManager().beginTransaction();
@@ -139,6 +138,7 @@ public class MainActivity extends AppCompatActivity
     }
     public void callGeofenceFragment()
     {
+        act=3;
         FragmentTransaction fragmentTransaction =
                 getSupportFragmentManager().beginTransaction();
         GeofenceActivity fragment=new GeofenceActivity();
@@ -147,6 +147,7 @@ public class MainActivity extends AppCompatActivity
     }
     public void callReminderFragment()
     {
+        act=2;
         FragmentTransaction fragmentTransaction =
                 getSupportFragmentManager().beginTransaction();
         ReminderListFragment fragment=new ReminderListFragment();
@@ -155,6 +156,7 @@ public class MainActivity extends AppCompatActivity
     }
     public void callContactUsFragment()
     {
+        act=4;
         FragmentTransaction fragmentTransaction =
                 getSupportFragmentManager().beginTransaction();
         ContactUs fragment=new ContactUs();
@@ -163,7 +165,7 @@ public class MainActivity extends AppCompatActivity
     }
     public void UserInput(View v)
     {
-        Intent intent=new Intent(this, UserDetails.class);
+        Intent intent=new Intent(this, UserDetails.class).putExtra("Activity Key", act);
         startActivity(intent);
     }
     @Override

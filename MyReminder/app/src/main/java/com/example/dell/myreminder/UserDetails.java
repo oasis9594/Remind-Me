@@ -30,7 +30,7 @@ public class UserDetails extends AppCompatActivity {
     String name, email, address, mPath;
     private static final String KEY_ADDRESS="userdetails.UserAddress",
             KEY_NAME="userdetails.UserName", KEY_EMAIL="userdetails.UserEmail",
-            NULL_VALUE="userdetails.nullValue", TAG="userdetails.TAG",
+            NULL_VALUE="userdetails.nullValue", TAG=AlarmConstants.ALARM_TAG,
             KEY_IMAGEPATH="userdetails.ProfileImagePath";
     private boolean isImageChanged;
     Bitmap bm;
@@ -77,7 +77,9 @@ public class UserDetails extends AppCompatActivity {
         if(isImageChanged)
             saveImageIntoFile(bm);
         saveIntoSharedPrefs();
-        finish();
+        startActivity(new Intent(this, MainActivity.class)
+                .putExtra("Activity Key", getIntent().getExtras().getInt("Activity Key"))
+                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK));
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

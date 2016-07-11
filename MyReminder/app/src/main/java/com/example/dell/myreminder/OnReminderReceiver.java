@@ -27,6 +27,9 @@ public class OnReminderReceiver extends WakefulBroadcastReceiver {
 
         mContext=context;
         // Retrieving row id on recieve
+        SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(mContext);
+        if(!sharedPreferences.getBoolean("notifications_reminder", true))
+            return;
         long rowId = intent.getExtras().getLong(RemindersDbAdapter.KEY_ROWID);
 
         Intent notificationIntent = new Intent(mContext, ReminderEditActivity.class);
@@ -62,7 +65,7 @@ public class OnReminderReceiver extends WakefulBroadcastReceiver {
         try{
             SharedPreferences getAlarms = PreferenceManager.
                     getDefaultSharedPreferences(mContext);
-            String reminders = getAlarms.getString("notification_ringtone", "default ringtone");
+            String reminders = getAlarms.getString("ringtone_notification", "default ringtone");
             if(reminders.equals("default ringtone"))
                 uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             else
