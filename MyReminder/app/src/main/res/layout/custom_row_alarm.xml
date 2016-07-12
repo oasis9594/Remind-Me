@@ -29,6 +29,9 @@
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/myAlarmTimeLeft"
             android:layout_marginTop="10dp"
+            android:ems="8"
+            android:maxEms="8"
+            android:singleLine="false"
             android:text="Title"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textStyle="bold" />
@@ -50,9 +53,10 @@
             android:layout_above="@+id/mySwitch"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="10dp"
-            android:text="Time"
+            android:text="23:00"
+            android:gravity="end"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textDirection="rtl" />
+            />
 
         <com.rey.material.widget.Switch
             style="@style/Material.Widget.Switch"
@@ -74,8 +78,9 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/myImage"
+            android:layout_below="@+id/myAlarmTimeLeft"
             android:layout_marginEnd="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="20dp"
             android:background="#e7e4e4" />
 
