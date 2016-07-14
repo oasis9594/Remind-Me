@@ -49,6 +49,7 @@ public class CustomAdapterAlarm extends RecyclerView.Adapter<CustomAdapterAlarm.
     private int mpos;
     private AlarmManager alarmManager;
     int snoozeTime;
+    boolean type=false;
 
     ArrayAdapter<CharSequence> adapter;
 
@@ -79,7 +80,16 @@ public class CustomAdapterAlarm extends RecyclerView.Adapter<CustomAdapterAlarm.
 
         //update system alarm
         if(myItem.isChecked())
+        {
+            //Cancel current alarm
+            for(int i=0;i<7;i++)
+            {
+                Intent intent=getIntent(myItem);
+                alarmManager.cancel(MyUtils.getPendingIntent(myItem.getId(), mContext, intent, i));
+            }
+            //Update alarm
             MyUtils.alarmUtil(myItem, mContext);
+        }
         //Make changes in database
         dbHandler.updateAlarm(myAlarmItems.get(mpos));
         Log.w(AlarmConstants.ALARM_TAG, "onTimeSet database updated");
