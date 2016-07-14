@@ -4,10 +4,12 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.WakefulBroadcastReceiver;
@@ -93,8 +95,24 @@ public class GeofenceWakefulReceiver extends WakefulBroadcastReceiver {
                 .setContentTitle(notificationDetails)
                 .setContentText(mContext.getString(R.string.geofence_transition_notification_text))
                 .setContentIntent(notificationPendingIntent);
-        Uri uri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-
+        Uri uri;
+        try{
+            SharedPreferences getAlarms = PreferenceManager.
+                    getDefaultSharedPreferences(mContext);
+            String reminders = getAlarms.getString("ringtone_notification", "default ringtone");
+            if(reminders.equals("default ringtone"))
+                uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+            else
+                uri = Uri.parse(reminders);
+        }catch (Exception e)
+        {
+            Log.e(AlarmConstants.ALARM_TAG, e.getMessage());
+            uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        }
+        if(uri==null)
+        {
+            uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        }
         builder.setSound(uri);
 
         // Dismiss notification once the user touches it.

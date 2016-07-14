@@ -23,7 +23,6 @@ public class AddGeofence extends AppCompatActivity implements AdapterView.OnItem
     TextView text_geo_name, text_geo_radius, geo_add_colorMark;
     EditText edit_geo_name;
     Spinner geo_rad_spinner, geo_col_spinner;
-    CheckBox geo_sound;
     GeofenceDBHelper dbHelper;
     Button geo_pick;
 
@@ -42,7 +41,6 @@ public class AddGeofence extends AppCompatActivity implements AdapterView.OnItem
         edit_geo_name=(EditText)findViewById(R.id.edit_geo_name);
         geo_rad_spinner=(Spinner)findViewById(R.id.geo_rad_spinner);
         geo_col_spinner=(Spinner)findViewById(R.id.geo_col_spinner);
-        geo_sound=(CheckBox)findViewById(R.id.geo_sound);
         geo_pick=(Button)findViewById(R.id.geo_pick);
         dbHelper=GeofenceDBHelper.getInstance(this);
 
@@ -74,7 +72,6 @@ public class AddGeofence extends AppCompatActivity implements AdapterView.OnItem
         color=0;
         radius=50;
 
-        geo_sound.setChecked(true);
         if(bundle!=null)
         {
             int x=bundle.getInt(GeofenceUtils.ID_KEY);
@@ -99,7 +96,6 @@ public class AddGeofence extends AppCompatActivity implements AdapterView.OnItem
                 default: geo_rad_spinner.setSelection(0);
             }
             edit_geo_name.setText(mitem.getTitle());
-            geo_sound.setChecked(mitem.isPlaySound());
         }
         geo_pick.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,7 +111,7 @@ public class AddGeofence extends AppCompatActivity implements AdapterView.OnItem
                 item.setTitle(s);
                 item.setMarkerColor(color);
                 item.setRadius(radius);
-                item.setPlaySound(geo_sound.isChecked());
+                item.setPlaySound(true);
                 if(bundle==null)
                 {
                     item.setAddress("");

@@ -31,7 +31,6 @@ public class GeoDetails extends AppCompatActivity implements OnMapReadyCallback{
     int id, kms, ms;
     GeofenceDBHelper dbHelper;
     TextView edit_det_name, det_rad_spinner, det_address_text;
-    CheckBox det_sound;
     Button editDetails;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +43,6 @@ public class GeoDetails extends AppCompatActivity implements OnMapReadyCallback{
         det_rad_spinner=(TextView)findViewById(R.id.det_rad_spinner);
         det_address_text=(TextView)findViewById(R.id.det_address_text);
 
-        det_sound=(CheckBox)findViewById(R.id.det_sound);
         editDetails=(Button)findViewById(R.id.det_pick);
         Bundle bundle=getIntent().getExtras();
         id=bundle.getInt(GeofenceUtils.ID_KEY);
@@ -67,7 +65,6 @@ public class GeoDetails extends AppCompatActivity implements OnMapReadyCallback{
         s= s+ms+"m";
         det_rad_spinner.setText(s);
         det_address_text.setText(geofence.getAddress());
-        det_sound.setChecked(geofence.isPlaySound());
         editDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
