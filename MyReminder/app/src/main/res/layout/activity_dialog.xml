@@ -6,20 +6,19 @@
     android:layout_centerHorizontal="true"
     android:layout_centerVertical="true"
     android:background="#ffffff"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.dell.myreminder.DialogActivity">
 
     <TextView
         android:id="@+id/dialogText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:textSize="26sp"
+        android:text="ALARM"
+        android:textAlignment="center"
+        android:singleLine="false"
+        android:layout_below="@+id/dialogAlarm"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/mdtp_accent_color" />
 
     <Button
@@ -51,9 +50,9 @@
 
     <ImageView
         android:id="@+id/dialogAlarm"
-        android:layout_width="280dp"
-        android:layout_height="250dp"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:scaleType="centerCrop"
         android:layout_centerHorizontal="true"
-        android:layout_alignTop="@+id/dialogText"
-        android:src="@drawable/alarm_dialog_image" />
+        android:src="@drawable/icon_user_default" />
 </RelativeLayout>

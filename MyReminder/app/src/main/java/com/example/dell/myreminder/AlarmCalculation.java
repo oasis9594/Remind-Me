@@ -7,6 +7,8 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
@@ -22,6 +24,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Random;
 
 public class AlarmCalculation extends AppCompatActivity {
@@ -32,12 +37,14 @@ public class AlarmCalculation extends AppCompatActivity {
     TextView equation_id, alarmText;
     ImageView myImage;
     EditText answer;
+    String mPath=null;
 
     NotificationCompat.Builder mBuilder;
     NotificationManager mNotificationManager;
     public static boolean activityVisible;
     int id=23846;//Notification id
 
+    public static final String KEY_IMAGEPATH="userdetails.ProfileImagePath";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +58,12 @@ public class AlarmCalculation extends AppCompatActivity {
         equation_id=(TextView)findViewById(R.id.equation_id);
         answer=(EditText)findViewById(R.id.answer_id);
         myImage=(ImageView)findViewById(R.id.myImage);
+        SharedPreferences sharedPref = this.getSharedPreferences(
+                getString(R.string.preference_user_key), Context.MODE_PRIVATE);
+        mPath=sharedPref.getString(KEY_IMAGEPATH, null);
+
+        if(mPath!=null)
+            loadImageFromStorage();
         rand=new Random();
         SharedPreferences shared= PreferenceManager.getDefaultSharedPreferences(this);
         if(shared.getString(getResources().getString(R.string.alarm_type_key), "-1").equals("1"))
@@ -223,5 +236,17 @@ public class AlarmCalculation extends AppCompatActivity {
         Log.w(AlarmConstants.ALARM_TAG, "onStart");
         activityVisible=true;
         super.onStart();
+    }
+    private void loadImageFromStorage()
+    {
+        try {
+            File f=new File(mPath);
+            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
+            myImage.setImageBitmap(b);
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
     }
 }

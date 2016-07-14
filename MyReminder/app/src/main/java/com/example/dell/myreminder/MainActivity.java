@@ -83,7 +83,6 @@ public class MainActivity extends AppCompatActivity
             updateFromBundle(savedInstanceState);
         else
             callAlarmFragment();
-
     }
 
     public void getFromSharedPrefs()
@@ -166,7 +165,7 @@ public class MainActivity extends AppCompatActivity
                 getSupportFragmentManager().beginTransaction();
         ContactUs fragment=new ContactUs();
         fragmentTransaction.replace(R.id.fragment_container, fragment, "GeofenceFragment").commit();
-        navigationView.getMenu().getItem(1).setChecked(true);
+//        navigationView.getMenu().getItem(4).setChecked(true);
     }
     public void UserInput(View v)
     {

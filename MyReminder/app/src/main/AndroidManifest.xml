@@ -42,6 +42,7 @@
         <activity
             android:name=".DialogActivity"
             android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
             android:excludeFromRecents="true"
             android:showOnLockScreen="true" />
         <activity android:name=".UserDetails" />
@@ -62,8 +63,9 @@
         <activity
             android:name=".AlarmCalculation"
             android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
             android:excludeFromRecents="true"
-            android:showOnLockScreen="true" />
+            android:showOnLockScreen="true"/>
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"

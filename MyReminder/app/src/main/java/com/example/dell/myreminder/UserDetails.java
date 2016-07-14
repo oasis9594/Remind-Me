@@ -6,11 +6,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.Display;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -99,14 +102,17 @@ public class UserDetails extends AppCompatActivity {
 
 
             // The new size we want to scale to
-            final int REQUIRED_SIZE = 140;
-
+            final int REQUIRED_HEIGHT=(int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 280, getResources().getDisplayMetrics());
+            Display display = getWindowManager().getDefaultDisplay();
+            Point size = new Point();
+            display.getSize(size);
+            final int REQUIRED_WIDTH = size.x;
             // Find the correct scale value. It should be the power of 2.
             int width_tmp = o.outWidth, height_tmp = o.outHeight;
             int scale = 1;
             while (true) {
-                if (width_tmp / 2 < REQUIRED_SIZE
-                        || height_tmp / 2 < REQUIRED_SIZE) {
+                if (width_tmp / 2 < REQUIRED_WIDTH
+                        || height_tmp / 2 < REQUIRED_HEIGHT) {
                     break;
                 }
                 width_tmp /= 2;
