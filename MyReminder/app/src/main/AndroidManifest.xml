@@ -32,15 +32,15 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".AlarmReceiver" />
+        <receiver android:name=".Alarms.AlarmReceiver" />
 
         <service
-            android:name=".RingtonePlayingService"
+            android:name=".Utility.RingtonePlayingService"
             android:enabled="true"
             android:exported="true" />
 
         <activity
-            android:name=".DialogActivity"
+            android:name=".Alarms.DialogActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             android:excludeFromRecents="true"
@@ -48,7 +48,7 @@
         <activity android:name=".UserDetails" />
 
         <receiver
-            android:name=".AlarmBootReceiver"
+            android:name=".Alarms.AlarmBootReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -56,12 +56,12 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name=".AlarmActivityReceiver"
+            android:name=".Alarms.AlarmActivityReceiver"
             android:enabled="true"
             android:exported="true" />
 
         <activity
-            android:name=".AlarmCalculation"
+            android:name=".Alarms.AlarmCalculation"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             android:excludeFromRecents="true"
@@ -87,29 +87,29 @@
             android:value="@string/google_maps_key" />
 
         <receiver
-            android:name=".GeofenceWakefulReceiver"
+            android:name=".Geofences.GeofenceWakefulReceiver"
             android:enabled="true"
             android:exported="true" />
 
         <activity
-            android:name=".AddGeofence"
+            android:name=".Geofences.AddGeofence"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".GeoDetails"
+            android:name=".Geofences.GeoDetails"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".GeocodingMapsActivity"
+            android:name=".Geofences.GeocodingMapsActivity"
             android:label="@string/title_activity_geocoding_maps"
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <service
-            android:name=".GeofenceTransitionsIntentService"
+            android:name=".Geofences.GeofenceTransitionsIntentService"
             android:exported="false" />
         <activity
-            android:name=".ReminderEditActivity" />
+            android:name=".Reminders.ReminderEditActivity" />
 
-        <receiver android:name=".OnReminderReceiver" />
+        <receiver android:name=".Reminders.OnReminderReceiver" />
 
     </application>
 

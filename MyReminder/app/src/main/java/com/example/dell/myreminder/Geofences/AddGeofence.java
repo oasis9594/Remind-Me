@@ -1,4 +1,4 @@
-package com.example.dell.myreminder;
+package com.example.dell.myreminder.Geofences;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -14,8 +14,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dell.myreminder.Geofences.GeocodingMapsActivity;
+import com.example.dell.myreminder.Geofences.GeofenceDBHelper;
+import com.example.dell.myreminder.Geofences.GeofenceUtils;
+import com.example.dell.myreminder.Geofences.GeofencingObject;
+import com.example.dell.myreminder.R;
 import com.rey.material.widget.Button;
-import com.rey.material.widget.CheckBox;
 
 public class AddGeofence extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 

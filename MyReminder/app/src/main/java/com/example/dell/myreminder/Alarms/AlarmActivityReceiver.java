@@ -1,9 +1,11 @@
-package com.example.dell.myreminder;
+package com.example.dell.myreminder.Alarms;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+
+import com.example.dell.myreminder.Utility.AlarmConstants;
 
 public class AlarmActivityReceiver extends BroadcastReceiver {
     public AlarmActivityReceiver() {

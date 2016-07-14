@@ -1,4 +1,4 @@
-package com.example.dell.myreminder;
+package com.example.dell.myreminder.Alarms;
 
 import android.app.ActivityManager;
 import android.app.Notification;
@@ -23,6 +23,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.dell.myreminder.Utility.AlarmConstants;
+import com.example.dell.myreminder.R;
+import com.example.dell.myreminder.Utility.RingtonePlayingService;
 
 import java.io.File;
 import java.io.FileInputStream;

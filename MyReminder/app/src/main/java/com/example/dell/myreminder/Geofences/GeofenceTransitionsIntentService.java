@@ -1,4 +1,4 @@
-package com.example.dell.myreminder;
+package com.example.dell.myreminder.Geofences;
 import android.app.IntentService;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -10,13 +10,13 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
-import android.text.TextUtils;
 import android.util.Log;
 
+import com.example.dell.myreminder.MainActivity;
+import com.example.dell.myreminder.R;
 import com.google.android.gms.location.Geofence;
 import com.google.android.gms.location.GeofencingEvent;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

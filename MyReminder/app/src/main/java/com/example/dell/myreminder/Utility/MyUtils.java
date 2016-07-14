@@ -1,4 +1,4 @@
-package com.example.dell.myreminder;
+package com.example.dell.myreminder.Utility;
 
 
 import android.app.AlarmManager;
@@ -6,6 +6,10 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+
+import com.example.dell.myreminder.Alarms.AlarmItems;
+import com.example.dell.myreminder.Alarms.AlarmReceiver;
+import com.example.dell.myreminder.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

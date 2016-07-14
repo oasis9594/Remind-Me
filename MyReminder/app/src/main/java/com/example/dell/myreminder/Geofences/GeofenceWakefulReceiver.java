@@ -1,6 +1,4 @@
-package com.example.dell.myreminder;
-
-
+package com.example.dell.myreminder.Geofences;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -16,24 +14,62 @@ import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.WakefulBroadcastReceiver;
 import android.util.Log;
 
-public class OnReminderReceiver extends WakefulBroadcastReceiver {
+import com.example.dell.myreminder.Utility.AlarmConstants;
+import com.example.dell.myreminder.MainActivity;
+import com.example.dell.myreminder.R;
+import com.google.android.gms.location.Geofence;
+import com.google.android.gms.location.GeofencingEvent;
 
-    private static final String TAG = AlarmConstants.ALARM_TAG;
+import java.util.List;
 
+public class GeofenceWakefulReceiver extends WakefulBroadcastReceiver {
+    public GeofenceWakefulReceiver() {
+    }
     Context mContext;
     @Override
-    public void onReceive(Context context, Intent intent) {
-        Log.d(TAG, "Received wake up from alarm manager.");
-
+    public void onReceive(Context context, Intent intent)
+    {
         mContext=context;
-        // Retrieving row id on recieve
-        SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(mContext);
-        if(!sharedPreferences.getBoolean("notifications_reminder", true))
+        Log.w(GeofenceUtils.getTag(), "GeofenceBroadcastReceiver");
+        GeofencingEvent geofencingEvent = GeofencingEvent.fromIntent(intent);
+        if (geofencingEvent.hasError()) {
+            String errorMessage = "geofencingEvent has error";
+            Log.e(GeofenceUtils.getTag(), errorMessage);
             return;
-        long rowId = intent.getExtras().getLong(RemindersDbAdapter.KEY_ROWID);
+        }
+        String title=intent.getStringExtra(GeofenceUtils.TITLE_KEY);
+        int id=intent.getIntExtra(GeofenceUtils.ID_KEY, 0);
+        // Get the transition type.
+        int geofenceTransition = geofencingEvent.getGeofenceTransition();
 
-        Intent notificationIntent = new Intent(mContext, ReminderEditActivity.class);
-        notificationIntent.putExtra(RemindersDbAdapter.KEY_ROWID, rowId);
+        // Test that the reported transition was of interest.
+        if (geofenceTransition == Geofence.GEOFENCE_TRANSITION_ENTER ||
+                geofenceTransition == Geofence.GEOFENCE_TRANSITION_EXIT) {
+
+            // Get the geofences that were triggered. A single event can trigger multiple geofences.
+            List<Geofence> triggeringGeofences = geofencingEvent.getTriggeringGeofences();
+
+            // Get the transition details as a String.
+            /*String geofenceTransitionDetails = getGeofenceTransitionDetails(
+                    this,
+                    geofenceTransition,
+                    triggeringGeofences
+            );*/
+
+            // Send notification and log the transition details.
+            sendNotification(title, id);
+            Log.i(GeofenceUtils.getTag(), title+" "+id);
+        } else {
+            // Log the error.
+            Log.e(GeofenceUtils.getTag(), context.getString(R.string.geofence_transition_invalid_type, geofenceTransition));
+        }
+    }
+    private void sendNotification(String notificationDetails, int id) {
+        // Create an explicit content Intent that starts the main Activity
+        Log.w(GeofenceUtils.getTag(), "sendNotification");
+        Intent notificationIntent = new Intent(mContext, MainActivity.class);
+        notificationIntent.putExtra("Activity Key", 3);
+
         // Construct a task stack.
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(mContext);
 
@@ -58,8 +94,8 @@ public class OnReminderReceiver extends WakefulBroadcastReceiver {
                 .setLargeIcon(BitmapFactory.decodeResource(mContext.getResources(),
                         R.mipmap.ic_launcher))
                 .setColor(Color.RED)
-                .setContentTitle(mContext.getString(R.string.notify_new_task_title))
-                .setContentText(mContext.getString(R.string.notify_new_task_message))
+                .setContentTitle(notificationDetails)
+                .setContentText(mContext.getString(R.string.geofence_transition_notification_text))
                 .setContentIntent(notificationPendingIntent);
         Uri uri;
         try{
@@ -89,7 +125,6 @@ public class OnReminderReceiver extends WakefulBroadcastReceiver {
                 (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
 
         // Issue the notification
-        mNotificationManager.notify((int)rowId, builder.build());
+        mNotificationManager.notify(id, builder.build());
     }
 }
-

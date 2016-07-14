@@ -1,4 +1,4 @@
-package com.example.dell.myreminder;
+package com.example.dell.myreminder.Reminders;
 
 /**
  * Created by user on 07-07-2016.

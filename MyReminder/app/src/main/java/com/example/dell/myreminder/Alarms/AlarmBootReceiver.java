@@ -1,10 +1,16 @@
-package com.example.dell.myreminder;
+package com.example.dell.myreminder.Alarms;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.util.Log;
+
+import com.example.dell.myreminder.Utility.MyDBHandler;
+import com.example.dell.myreminder.Utility.MyUtils;
+import com.example.dell.myreminder.Reminders.ReminderEditActivity;
+import com.example.dell.myreminder.Reminders.ReminderManager;
+import com.example.dell.myreminder.Reminders.RemindersDbAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

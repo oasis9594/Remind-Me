@@ -17,8 +17,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.dell.myreminder.Alarms.AlarmActivity;
+import com.example.dell.myreminder.Geofences.GeofenceActivity;
+import com.example.dell.myreminder.Reminders.ReminderListFragment;
+import com.example.dell.myreminder.Utility.AlarmConstants;
 
 import java.io.File;
 import java.io.FileInputStream;

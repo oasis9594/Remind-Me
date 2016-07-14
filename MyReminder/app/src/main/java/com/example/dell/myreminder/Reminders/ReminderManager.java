@@ -1,9 +1,11 @@
-package com.example.dell.myreminder;
+package com.example.dell.myreminder.Reminders;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+
+import com.example.dell.myreminder.Utility.AlarmConstants;
 
 import java.util.Calendar;
 
@@ -24,7 +26,7 @@ public class ReminderManager {
         Intent i = new Intent(mContext, OnReminderReceiver.class);
         i.putExtra(RemindersDbAdapter.KEY_ROWID, (long)taskId);
 
-        PendingIntent pi = PendingIntent.getBroadcast(mContext,(int)((long)taskId)%AlarmConstants.BASE_VALUE, i, PendingIntent.FLAG_ONE_SHOT);
+        PendingIntent pi = PendingIntent.getBroadcast(mContext,(int)((long)taskId)% AlarmConstants.BASE_VALUE, i, PendingIntent.FLAG_ONE_SHOT);
 
         mAlarmManager.set(AlarmManager.RTC_WAKEUP, when.getTimeInMillis(), pi);
     }

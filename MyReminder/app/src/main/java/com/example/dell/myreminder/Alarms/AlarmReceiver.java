@@ -1,4 +1,4 @@
-package com.example.dell.myreminder;
+package com.example.dell.myreminder.Alarms;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.content.WakefulBroadcastReceiver;
 import android.util.Log;
-import android.view.WindowManager;
+
+import com.example.dell.myreminder.Utility.AlarmConstants;
+import com.example.dell.myreminder.Utility.MyDBHandler;
+import com.example.dell.myreminder.R;
 
 public class AlarmReceiver extends WakefulBroadcastReceiver {
 

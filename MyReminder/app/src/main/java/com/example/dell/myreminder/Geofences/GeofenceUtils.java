@@ -1,8 +1,10 @@
-package com.example.dell.myreminder;
+package com.example.dell.myreminder.Geofences;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+
+import com.example.dell.myreminder.R;
 
 public class GeofenceUtils {
     private static final int base=100000, mul=1;

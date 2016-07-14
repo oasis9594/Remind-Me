@@ -1,4 +1,4 @@
-package com.example.dell.myreminder;
+package com.example.dell.myreminder.Alarms;
 
 
 import android.app.Activity;
@@ -15,9 +15,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -37,6 +35,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.dell.myreminder.Utility.AlarmConstants;
+import com.example.dell.myreminder.MainActivity;
+import com.example.dell.myreminder.Utility.MyDBHandler;
+import com.example.dell.myreminder.Utility.MyUtils;
+import com.example.dell.myreminder.R;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 

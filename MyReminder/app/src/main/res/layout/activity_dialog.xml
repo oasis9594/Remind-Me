@@ -6,7 +6,7 @@
     android:layout_centerHorizontal="true"
     android:layout_centerVertical="true"
     android:background="#ffffff"
-    tools:context="com.example.dell.myreminder.DialogActivity">
+    tools:context=".Alarms.DialogActivity">
 
     <TextView
         android:id="@+id/dialogText"

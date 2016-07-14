@@ -1,6 +1,5 @@
-package com.example.dell.myreminder;
+package com.example.dell.myreminder.Alarms;
 
-import android.app.PendingIntent;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -10,6 +9,7 @@ public class AlarmItems implements Parcelable{
     private boolean isChecked;
     private int id;
     boolean repeat;
+
 
     int snoozeTime;
     boolean sunday, monday, tuesday, wednesday, thursday, friday, saturday;
@@ -195,7 +195,7 @@ public class AlarmItems implements Parcelable{
         this.id = id;
     }
 
-    AlarmItems() {
+    public AlarmItems() {
         setSnoozeTime(15);
         setTitle("Alarm");
     }
@@ -266,7 +266,7 @@ public class AlarmItems implements Parcelable{
         dest.writeByte(saturday ? (byte) 1 : (byte) 0);
     }
 
-    protected AlarmItems(Parcel in) {
+    public AlarmItems(Parcel in) {
         this.title = in.readString();
         this.hours = in.readInt();
         this.minutes = in.readInt();

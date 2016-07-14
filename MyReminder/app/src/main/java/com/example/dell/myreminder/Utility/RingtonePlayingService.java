@@ -1,4 +1,4 @@
-package com.example.dell.myreminder;
+package com.example.dell.myreminder.Utility;
 
 import android.app.Service;
 import android.content.Context;

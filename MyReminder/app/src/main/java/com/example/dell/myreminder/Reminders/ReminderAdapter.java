@@ -1,4 +1,4 @@
-package com.example.dell.myreminder;
+package com.example.dell.myreminder.Reminders;
 
 
 import android.content.Context;
@@ -12,6 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.dell.myreminder.Utility.AlarmConstants;
+import com.example.dell.myreminder.Geofences.GeofenceUtils;
+import com.example.dell.myreminder.Utility.MyUtils;
+import com.example.dell.myreminder.R;
 
 import java.text.DateFormat;
 import java.text.ParseException;

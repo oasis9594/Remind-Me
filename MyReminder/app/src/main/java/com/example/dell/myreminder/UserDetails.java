@@ -17,7 +17,8 @@ import android.view.Display;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
+
+import com.example.dell.myreminder.Utility.AlarmConstants;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -33,7 +34,7 @@ public class UserDetails extends AppCompatActivity {
     String name, email, address, mPath;
     private static final String KEY_ADDRESS="userdetails.UserAddress",
             KEY_NAME="userdetails.UserName", KEY_EMAIL="userdetails.UserEmail",
-            NULL_VALUE="userdetails.nullValue", TAG=AlarmConstants.ALARM_TAG,
+            NULL_VALUE="userdetails.nullValue", TAG= AlarmConstants.ALARM_TAG,
             KEY_IMAGEPATH="userdetails.ProfileImagePath";
     private boolean isImageChanged;
     Bitmap bm;

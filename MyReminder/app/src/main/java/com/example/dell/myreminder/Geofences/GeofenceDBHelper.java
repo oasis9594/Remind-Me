@@ -1,4 +1,4 @@
-package com.example.dell.myreminder;
+package com.example.dell.myreminder.Geofences;
 
 import android.content.ContentValues;
 import android.content.Context;

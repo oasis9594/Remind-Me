@@ -1,4 +1,4 @@
-package com.example.dell.myreminder;
+package com.example.dell.myreminder.Alarms;
 
 import android.app.Activity;
 import android.app.AlarmManager;
@@ -17,6 +17,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.dell.myreminder.Utility.AlarmConstants;
+import com.example.dell.myreminder.Utility.MyDBHandler;
+import com.example.dell.myreminder.Utility.MyUtils;
+import com.example.dell.myreminder.R;
 import com.rey.material.widget.Button;
 import com.rey.material.widget.CheckBox;
 import com.rey.material.widget.ImageButton;
@@ -35,10 +39,8 @@ import android.widget.Toast;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Locale;
 
 public class CustomAdapterAlarm extends RecyclerView.Adapter<CustomAdapterAlarm.ViewHolder>
         implements TimePickerDialog.OnTimeSetListener{
