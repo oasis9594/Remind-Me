@@ -11,6 +11,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.SystemClock;
 import android.os.Bundle;
@@ -23,6 +25,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 public class DialogActivity extends Activity {
 
     Button cancel;
@@ -34,11 +40,13 @@ public class DialogActivity extends Activity {
     int cntr = 4535342;
     int id=23846;//Notification id
     int snoozeAlarm;
+    String mPath;
     public static boolean activityVisible;
     NotificationCompat.Builder mBuilder;
     NotificationManager mNotificationManager;
     BroadcastReceiver myReceiver;
-    public static final String CANCEL_ACTION="cancel", SNOOZE_ACTION="snooze";
+
+    public static final String CANCEL_ACTION="cancel", SNOOZE_ACTION="snooze", KEY_IMAGEPATH="userdetails.ProfileImagePath";
     String text;
 
     @Override
@@ -62,6 +70,13 @@ public class DialogActivity extends Activity {
         alarmImage = (ImageView) findViewById(R.id.dialogAlarm);
         alarmText = (TextView) findViewById(R.id.dialogText);
         snoozeAlarm=15*60*1000;
+
+        SharedPreferences sharedPref = this.getSharedPreferences(
+                getString(R.string.preference_user_key), Context.MODE_PRIVATE);
+        mPath=sharedPref.getString(KEY_IMAGEPATH, null);
+
+        if(mPath!=null)
+            loadImageFromStorage();
         try {
             text = "Alarm";
             Bundle bundle = getIntent().getExtras();
@@ -257,6 +272,18 @@ public class DialogActivity extends Activity {
         return false;
     }
 
+    private void loadImageFromStorage()
+    {
+        try {
+            File f=new File(mPath);
+            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
+            alarmImage.setImageBitmap(b);
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+    }
     @Override
     protected void onStop() {
         Log.w(AlarmConstants.ALARM_TAG, "onStop");
