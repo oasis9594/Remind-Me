@@ -38,17 +38,7 @@
             android:layout_marginEnd="20dp"
             android:layout_marginStart="20dp"
             android:layout_below="@+id/text_geo_name"/>
-        <View
-            android:id="@+id/dividerAddLine"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_below="@+id/edit_geo_name"
-            android:background="#808080" />
+
         <TextView
             android:id="@+id/text_geo_radius"
             android:layout_width="wrap_content"
@@ -65,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/geo_rad_spinner"
-            android:layout_marginTop="10dp"
+            android:layout_alignTop="@+id/text_geo_radius"
             android:layout_toEndOf="@+id/text_geo_radius"
             android:layout_below="@+id/dividerAddLine"/>
         <View
