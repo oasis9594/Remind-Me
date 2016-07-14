@@ -78,6 +78,10 @@ public class GeofenceActivity extends Fragment implements GoogleApiClient.Connec
         Log.w(GeofenceUtils.getTag(), "onCreateView2");
         geofenceToolbar=(Toolbar)view.findViewById(R.id.geofenceActivityToolbar);
 
+        //Hide the toolbar of main activity
+        Toolbar mtoolbar=(Toolbar)getActivity().findViewById(R.id.toolbar);
+        mtoolbar.setVisibility(View.GONE);
+
         Log.w(GeofenceUtils.getTag(), "onCreateView3");
         try {
             geofenceToolbar.setTitle("Location Reminder");

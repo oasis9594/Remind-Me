@@ -41,6 +41,10 @@ public class ReminderListFragment extends ListFragment {
         mDbHelper.open();
         toolbar=(Toolbar)view.findViewById(R.id.reminderActivityToolbar);
         toolbar.setTitle("My Reminders");
+        //Hide the toolbar of main activity
+        Toolbar mtoolbar=(Toolbar)getActivity().findViewById(R.id.toolbar);
+        mtoolbar.setVisibility(View.GONE);
+
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_nav_icon);
         FAB=(FloatingActionButton)view.findViewById(R.id.myRemFab);
