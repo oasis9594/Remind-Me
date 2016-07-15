@@ -1,6 +1,7 @@
 package com.example.dell.myreminder.Reminders;
 
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.dell.myreminder.MainActivity;
 import com.example.dell.myreminder.R;
+import com.example.dell.myreminder.Utility.AlarmConstants;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
@@ -88,16 +91,16 @@ public class ReminderEditActivity extends AppCompatActivity implements TimePicke
 
     @Override
     protected void onPause() {
-        super.onPause();
         mDbHelper.close();
+        super.onPause();
     }
 
     @Override
     protected void onResume() {
-        super.onResume();
         mDbHelper.open();
         setRowIdFromIntent();
         populateFields();
+        super.onResume();
     }
 
     private void showDatePicker() {
@@ -153,11 +156,6 @@ public class ReminderEditActivity extends AppCompatActivity implements TimePicke
 
         });
 
-
-        if(bundle==null)
-        mCalendar=Calendar.getInstance();
-     //   updateDateButtonText();
-     //   updateTimeButtonText();
     }
 
     private void populateFields()  {
@@ -167,11 +165,17 @@ public class ReminderEditActivity extends AppCompatActivity implements TimePicke
         if (mRowId != null) {
             Cursor reminder = mDbHelper.fetchReminder(mRowId);
             startManagingCursor(reminder);
-            mTitleText.setText(reminder.getString(
-                    reminder.getColumnIndexOrThrow(RemindersDbAdapter.KEY_TITLE)));
-            mBodyText.setText(reminder.getString(
-                    reminder.getColumnIndexOrThrow(RemindersDbAdapter.KEY_BODY)));
-
+            try {
+                if (reminder.getString(reminder.getColumnIndexOrThrow(RemindersDbAdapter.KEY_TITLE)) != null)
+                    mTitleText.setText(reminder.getString(
+                            reminder.getColumnIndexOrThrow(RemindersDbAdapter.KEY_TITLE)));
+                if (reminder.getString(reminder.getColumnIndexOrThrow(RemindersDbAdapter.KEY_BODY)) != null)
+                    mBodyText.setText(reminder.getString(
+                            reminder.getColumnIndexOrThrow(RemindersDbAdapter.KEY_BODY)));
+            }catch (Exception e)
+            {
+                Log.e(AlarmConstants.ALARM_TAG, "populateFields: "+e.getMessage());
+            }
 
             // Get the date from the database and format it for our use.
             SimpleDateFormat dateTimeFormat = new SimpleDateFormat(DATE_TIME_FORMAT, Locale.ENGLISH);
@@ -186,9 +190,7 @@ public class ReminderEditActivity extends AppCompatActivity implements TimePicke
         }
         updateDateButtonText();
         updateTimeButtonText();
-
     }
-
     private void updateTimeButtonText() {
         // Set the time button text based upon the value from the database
         SimpleDateFormat timeFormat = new SimpleDateFormat(TIME_FORMAT, Locale.ENGLISH);
@@ -205,6 +207,7 @@ public class ReminderEditActivity extends AppCompatActivity implements TimePicke
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
+        if(mRowId!=null)
         outState.putLong(RemindersDbAdapter.KEY_ROWID, mRowId);
         outState.putString(KEY_TITLE_I, mTitleText.getText().toString());
         outState.putString(KEY_DESC_I, mBodyText.getText().toString());
@@ -246,6 +249,12 @@ public class ReminderEditActivity extends AppCompatActivity implements TimePicke
         mCalendar.set(Calendar.YEAR, year);
         mCalendar.set(Calendar.MONTH, monthOfYear);
         mCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, MainActivity.class).putExtra("Activity Key", 2)
+                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK));
     }
 }
 

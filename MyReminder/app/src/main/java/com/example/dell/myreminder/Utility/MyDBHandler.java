@@ -146,12 +146,12 @@ public class MyDBHandler extends SQLiteOpenHelper{
         }
         db.execSQL("DELETE FROM " + TABLE_NAME + " WHERE " + COLUMN_ID + "=\"" + item.getId() + "\";");
     }
-    public int toggleAlarm(AlarmItems item)
+    public int updateChecked(AlarmItems item, boolean checked)
     {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(COLUMN_CHECKED, item.isChecked());
+        values.put(COLUMN_CHECKED, checked);
 
         return db.update(TABLE_NAME, values, COLUMN_ID + " = ?",
                 new String[] { String.valueOf(item.getId()) });

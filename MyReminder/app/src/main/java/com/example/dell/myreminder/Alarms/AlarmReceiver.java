@@ -26,7 +26,7 @@ public class AlarmReceiver extends WakefulBroadcastReceiver {
             {
                 try {
                     item.setIsChecked(false);
-                    dbHandler.toggleAlarm(item);
+                    dbHandler.updateChecked(item, false);
                 }catch (Exception e)
                 {
                     Log.w(AlarmConstants.ALARM_TAG, "AlarmReceiver1: " + e.getMessage());

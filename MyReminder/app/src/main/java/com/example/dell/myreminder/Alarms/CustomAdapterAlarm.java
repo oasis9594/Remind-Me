@@ -123,7 +123,7 @@ public class CustomAdapterAlarm extends RecyclerView.Adapter<CustomAdapterAlarm.
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, Switch.OnCheckedChangeListener {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView myAlarmTitle;
         TextView myAlarmTime;
@@ -163,7 +163,7 @@ public class CustomAdapterAlarm extends RecyclerView.Adapter<CustomAdapterAlarm.
             fri=(Button)childlayout.findViewById(R.id.friday_Button);
             sat=(Button)childlayout.findViewById(R.id.saturday_Button);
 
-            mySwitch.setOnCheckedChangeListener(this);
+            mySwitch.setOnClickListener(this);
             customView.setOnClickListener(this);
             trashButton.setOnClickListener(this);
             snoozeButton.setOnClickListener(this);
@@ -182,7 +182,9 @@ public class CustomAdapterAlarm extends RecyclerView.Adapter<CustomAdapterAlarm.
         @Override
         public void onClick(View v) {
             int position=getAdapterPosition();
-            if(v instanceof ImageButton){
+            if(v instanceof Switch)
+                mListener.onSwitchToggle((Switch) v, position);
+            else if(v instanceof ImageButton){
                 if(v.getId()==R.id.alarmTrash)
                     mListener.trashClick((ImageButton)v, position);
                 else
@@ -221,11 +223,6 @@ public class CustomAdapterAlarm extends RecyclerView.Adapter<CustomAdapterAlarm.
             else {
                 mListener.onClickAlarm(v, position);
             }
-        }
-
-        @Override
-        public void onCheckedChanged(Switch view, boolean checked) {
-            mListener.onSwitchToggle(view, getAdapterPosition());
         }
 
         public interface IMyViewHolderClicks {
@@ -276,14 +273,14 @@ public class CustomAdapterAlarm extends RecyclerView.Adapter<CustomAdapterAlarm.
         ViewHolder vh = new ViewHolder(customView, new ViewHolder.IMyViewHolderClicks() {
             public void onSwitchToggle(Switch s, int pos) {
                 AlarmItems myItem=myAlarmItems.get(pos);
-                boolean b = myItem.toggle();
                 //Update in database
-                dbHandler.toggleAlarm(myItem);
+                boolean checked=myItem.toggle();
+                dbHandler.updateChecked(myItem, checked);
 
-                if(b) {
+                if(checked) {
                     Toast.makeText(s.getContext(), "Alarm On", Toast.LENGTH_SHORT).show();
                     MyUtils.alarmUtil(myItem, mContext);
-                    //notifyItemChanged(pos);
+                    notifyItemChanged(pos);
                 }
                 else {
                     Toast.makeText(s.getContext(), "Alarm Off", Toast.LENGTH_SHORT).show();
@@ -292,7 +289,7 @@ public class CustomAdapterAlarm extends RecyclerView.Adapter<CustomAdapterAlarm.
                         Intent intent=getIntent(myItem);
                         alarmManager.cancel(MyUtils.getPendingIntent(myItem.getId(), mContext, intent, i));
                     }
-                    //notifyItemChanged(pos);
+                    notifyItemChanged(pos);
                 }
             }
             //trashClick DONE

@@ -107,25 +107,6 @@ public class AlarmCalculation extends AppCompatActivity {
                 }
             }
         });
-        /*String text;
-        AlarmItems myItem;
-        try {
-            text = "Alarm";
-            Bundle bundle = getIntent().getExtras();
-            if (bundle != null) {
-                myItem=bundle.getParcelable(AlarmConstants.PAR_KEY);
-                text = myItem.getTitle();
-            }
-            else {
-                Log.w(AlarmConstants.ALARM_TAG, "bundle is null in dialog activity");
-            }
-            alarmText.setText(text);
-        }
-        catch (Exception e)
-        {
-            Log.w(AlarmConstants.ALARM_TAG, "DialogActivity2: "+e.getMessage());
-            alarmText.setText("Alarm");
-        }*/
         startRingtone();
         showNotification();
     }

@@ -15,6 +15,7 @@ import com.example.dell.myreminder.Reminders.RemindersDbAdapter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
 
 public class AlarmBootReceiver extends BroadcastReceiver {
     MyDBHandler dbHandler;
@@ -47,13 +48,13 @@ public class AlarmBootReceiver extends BroadcastReceiver {
 
             // loop that fetches from database using cursor and passes date and time in a calendar object to set reminder
 
-            while(cursor.isAfterLast() == false) {
+            while(!cursor.isAfterLast()) {
 
                 Long rowId = cursor.getLong(rowIdColumnIndex);
                 String dateTime = cursor.getString(dateTimeColumnIndex);            // date and time stored as Strings in DB
 
                 Calendar cal = Calendar.getInstance();
-                SimpleDateFormat format = new SimpleDateFormat(ReminderEditActivity.DATE_TIME_FORMAT);
+                SimpleDateFormat format = new SimpleDateFormat(ReminderEditActivity.DATE_TIME_FORMAT, Locale.ENGLISH);
 
                 try {
                     java.util.Date date = format.parse(dateTime);           // Create a date object by formatting 'dateTime' String

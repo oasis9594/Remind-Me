@@ -68,7 +68,6 @@ public class AlarmActivity extends Fragment implements TimePickerDialog.OnTimeSe
 
     //RecyclerView
     private RecyclerView alarmView;
-    private RecyclerView.LayoutManager mLayoutManager;
 
     //Database
     MyDBHandler dbHandler;
@@ -142,17 +141,14 @@ public class AlarmActivity extends Fragment implements TimePickerDialog.OnTimeSe
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
         // alarmView.setHasFixedSize(true);
-        Log.w("MApp", "onCreateView");
         // use a linear layout manager
-        mLayoutManager =
-                new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         alarmView.setLayoutManager(mLayoutManager);
         Log.w("MApp", "onCreateView");
         // specify an adapter (see also next example)
         myAlarmAdapter = new CustomAdapterAlarm(alarmItems, getActivity());
         alarmView.setAdapter(myAlarmAdapter);
 
-        Toast.makeText(getActivity().getApplicationContext(), "hmm", Toast.LENGTH_SHORT).show();
         //set OnClickListener for FAB; Note onClick from xml cannot be used in fragments
         FAB.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,12 +162,18 @@ public class AlarmActivity extends Fragment implements TimePickerDialog.OnTimeSe
                         true
                 );
                 tpd.show(getActivity().getFragmentManager(), "Timepickerdialog");
-                Log.w("MApp", "FAB clicked");
             }
 
         });
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        if(myAlarmAdapter!=null)
+            myAlarmAdapter.notifyDataSetChanged();
+        super.onResume();
     }
 
     @Override

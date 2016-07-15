@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity
                 UserInput(v);
             }
         });
+        callAlarmFragment();
         getFromSharedPrefs();
         if(mPath!=null)
             loadImageFromStorage();
@@ -159,7 +160,7 @@ public class MainActivity extends AppCompatActivity
         FragmentTransaction fragmentTransaction =
                 getSupportFragmentManager().beginTransaction();
         ReminderListFragment fragment=new ReminderListFragment();
-        fragmentTransaction.replace(R.id.fragment_container, fragment, "GeofenceFragment").commit();
+        fragmentTransaction.replace(R.id.fragment_container, fragment, "ReminderFragment").commit();
         navigationView.getMenu().getItem(1).setChecked(true);
     }
     public void callContactUsFragment()
@@ -168,7 +169,7 @@ public class MainActivity extends AppCompatActivity
         FragmentTransaction fragmentTransaction =
                 getSupportFragmentManager().beginTransaction();
         ContactUs fragment=new ContactUs();
-        fragmentTransaction.replace(R.id.fragment_container, fragment, "GeofenceFragment").commit();
+        fragmentTransaction.replace(R.id.fragment_container, fragment, "ContactUsFragment").commit();
 //        navigationView.getMenu().getItem(4).setChecked(true);
     }
     public void UserInput(View v)

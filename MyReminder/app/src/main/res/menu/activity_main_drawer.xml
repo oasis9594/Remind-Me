@@ -4,11 +4,11 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/alarm"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_menu_alarm"
             android:title="@string/alarm_text" />
         <item
             android:id="@+id/task"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_menu_reminder"
             android:title="@string/task_text" />
         <item
             android:id="@+id/loc_reminder_id"
