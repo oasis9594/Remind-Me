@@ -96,41 +96,7 @@ public class GeofenceActivity extends Fragment implements GoogleApiClient.Connec
         geofencingObjects=dbHelper.getAllGeofences();
         Log.w(GeofenceUtils.getTag(), "gotAllGeofences!!!...building googleApiClient");
 
-        /*
-        LocationManager lm = (LocationManager)getContext().getSystemService(Context.LOCATION_SERVICE);
-        boolean gps_enabled = false;
-        boolean network_enabled = false;
 
-        try {
-            gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
-        } catch(Exception ex) {}
-
-        try {
-            network_enabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-        } catch(Exception ex) {}
-
-        if(!gps_enabled && !network_enabled) {
-            // notify user
-            final AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
-            dialog.setMessage(getContext().getResources().getString(R.string.gps_network_not_enabled));
-            dialog.setPositiveButton(getContext().getResources().getString(R.string.open_location_settings), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface paramDialogInterface, int paramInt) {
-                    // TODO Auto-generated method stub
-                    Intent myIntent = new Intent( Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                    getContext().startActivity(myIntent);
-                    //get gps
-                }
-            });
-            dialog.setNegativeButton(getContext().getString(R.string.Cancel), new DialogInterface.OnClickListener() {
-
-                @Override
-                public void onClick(DialogInterface paramDialogInterface, int paramInt) {
-
-                }
-            });
-            dialog.show();
-        }*/
         buildGoogleApiClient();
         createLocationRequest();
         buildLocationSettingsRequest();
@@ -351,11 +317,6 @@ public class GeofenceActivity extends Fragment implements GoogleApiClient.Connec
         super.onPause();
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        outState.putInt("Activity Key", 3);
-        super.onSaveInstanceState(outState);
-    }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {

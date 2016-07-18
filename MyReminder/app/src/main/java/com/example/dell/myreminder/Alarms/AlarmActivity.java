@@ -241,11 +241,6 @@ public class AlarmActivity extends Fragment implements TimePickerDialog.OnTimeSe
         }
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        outState.putInt("Actvity Key", 1);
-        super.onSaveInstanceState(outState);
-    }
     public void saveImageIntoFile(Bitmap bm)
     {
         ContextWrapper cw = new ContextWrapper(getContext().getApplicationContext());

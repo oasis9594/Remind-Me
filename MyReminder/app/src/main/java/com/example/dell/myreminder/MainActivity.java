@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
@@ -84,10 +85,13 @@ public class MainActivity extends AppCompatActivity
         {
             updateFromBundle(bundle);
         }
-        else if(savedInstanceState!=null)
-            updateFromBundle(savedInstanceState);
         else
-            callAlarmFragment();
+        {
+            if(savedInstanceState!=null)
+                updateFromBundle(savedInstanceState);
+            else
+                callAlarmFragment();
+        }
     }
 
     public void getFromSharedPrefs()
@@ -241,4 +245,9 @@ public class MainActivity extends AppCompatActivity
         Log.i(AlarmConstants.ALARM_TAG, "openDrawer");
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putInt("Activity Key", act);
+        super.onSaveInstanceState(outState);
+    }
 }

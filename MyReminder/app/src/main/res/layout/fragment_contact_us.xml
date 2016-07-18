@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.dell.myreminder.ContactUs">
+    tools:context="com.example.dell.myreminder.MainActivity"
+    android:weightSum="1">
+
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/contactAppbar"
@@ -20,20 +22,27 @@
             android:background="@color/colorPrimary"
             android:fitsSystemWindows="true" />
     </android.support.design.widget.AppBarLayout>
+
+
+
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="For any issues email us at:"
+        android:text="Tap to email us regarding any issues:"
         android:textSize="20sp"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:textColor="@color/black"
-        android:id="@+id/textView" />
+        android:textColor="#000"
+        android:id="@+id/issueText"
+        android:layout_margin="10dp"
+        android:gravity="center" />
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textSize="17sp"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:text="-> oasis9594@gmail.com\n-> mayanknarula96@gmail.com"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/mailAddress"
+        android:clickable="true"
+        android:layout_margin="10dp"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:gravity="center" />
 </LinearLayout>

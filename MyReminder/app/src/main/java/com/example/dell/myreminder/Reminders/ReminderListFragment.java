@@ -135,9 +135,4 @@ public class ReminderListFragment extends ListFragment {
         fillData();
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        outState.putInt("Actvity Key", 2);
-        super.onSaveInstanceState(outState);
-    }
 }
